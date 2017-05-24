@@ -1,0 +1,39 @@
+<h2>Add Item to Database</h2>
+
+<form action="/items" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label>Item Name:</label>
+    <input type="text" name="item[name]">
+  <input type="submit" value="Add New Item">
+</form>
+<hr>
+<h3>List of all Items</h3>
+
+<table>
+  <tr>
+    <th>Item Name    :</th>
+    <th>ID</th>
+  </tr>
+
+  <% if @items %>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %>   </td>
+        <td><%= item.id %></td>
+      </tr>
+    <% end %>
+  <% end %>
+
+</table>
+
+<hr>
+<h3>Add Item to Cart by ID</h3>
+<form id="item-finder">
+  <input type="number" name="item_id">
+  <input type="submit" value="Add Item">
+</form>
+
+<ul id="items-list">
+  
+</ul>
